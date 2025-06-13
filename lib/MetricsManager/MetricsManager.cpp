@@ -36,8 +36,8 @@ std::string MetricsManager::getMetricResults(const std::string& name){
 void MetricsManager::writeAllMetric() {
     writer_->printAllMetrics(metrics_);
 
-    for (const auto& [name, metricPtr] : metrics_) {
-        metricPtr->clearValues();
+    for (const auto& i : metrics_) {
+        i.second->clearValues();
     }
 }
 

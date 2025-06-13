@@ -15,7 +15,8 @@ FileWriter::FileWriter(std::string filepath)
 void FileWriter::printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>>& metrics){
     std::vector<std::future<std::string>> futures;
 
-    for (const auto& [name, metric] : metrics) {
+    for (const auto& i : metrics) {
+        auto metric = i.second;
         futures.push_back(std::async(std::launch::async, [metric]() {
             return metric->toString();
         }));
