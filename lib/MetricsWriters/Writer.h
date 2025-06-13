@@ -11,7 +11,7 @@
 class Writer{
 public:
     Writer()= default;
-    virtual void printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>> metrics){};
-    virtual std::string getPrintedPlace(){};
+    virtual void printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>>& metrics){};
+    virtual std::string getPrintedPlace()const{};
     virtual ~Writer()= default;
 };

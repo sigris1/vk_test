@@ -7,12 +7,12 @@
 #include "map"
 #include "string"
 
-FileWriter::FileWriter(std::string file_path)
-        :file_path_(std::move(file_path))
+FileWriter::FileWriter(std::string filepath)
+        :filepath_(std::move(filepath))
         {}
 
 
-void FileWriter::printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>> metrics) {
+void FileWriter::printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>>& metrics){
     std::vector<std::future<std::string>> futures;
 
     for (const auto& [name, metric] : metrics) {
@@ -22,9 +22,9 @@ void FileWriter::printAllMetrics(const std::unordered_map<std::string, std::shar
     }
 
     std::lock_guard<std::mutex> lock(file_mutex_);
-    std::ofstream file(file_path_, std::ios::app);
+    std::ofstream file(filepath_, std::ios::app);
     if (!file) {
-        std::cerr << "No such file: " << file_path_ << std::endl;
+        std::cerr << "No such file: " << filepath_;
         return;
     }
 
@@ -41,6 +41,6 @@ void FileWriter::printAllMetrics(const std::unordered_map<std::string, std::shar
     file << "\n";
 }
 
-std::string FileWriter::getPrintedPlace() {
-    return file_path_;
+std::string FileWriter::getPrintedPlace() const{
+    return filepath_;
 }

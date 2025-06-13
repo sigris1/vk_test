@@ -25,7 +25,7 @@ double mean(const std::vector<double>& nums) {
 
 std::pair<double, double> leastSquaresFit(const std::vector<double>& x, const std::vector<double>& y) {
     if (x.size() != y.size() || x.empty()) {
-        throw std::invalid_argument("Размеры x и y должны совпадать и быть > 0");
+        throw std::invalid_argument("The x and y dimensions must match and be > 0");
     }
 
     double sumX = 0.0, sumY = 0.0, sumXY = 0.0, sumX2 = 0.0;

@@ -16,7 +16,6 @@ public:
     void runAllMetrics();
     void writeAllMetric();
     ~MetricsManager()= default;
-
 private:
     std::unordered_map<std::string, std::shared_ptr<Metric>> metrics_;
     std::shared_ptr<Writer> writer_;

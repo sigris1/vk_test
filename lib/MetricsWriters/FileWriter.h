@@ -14,15 +14,15 @@
 
 class FileWriter : public Writer {
 public:
-    explicit FileWriter(std::string file_path);
+    explicit FileWriter(std::string filepath);
 
-    void printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>> metrics) override;
+    void printAllMetrics(const std::unordered_map<std::string, std::shared_ptr<Metric>>& metrics) override;
 
-    std::string getPrintedPlace() override;
+    std::string getPrintedPlace() const override;
 
     ~FileWriter()=default;
 private:
-    std::string file_path_;
+    std::string filepath_;
     std::mutex file_mutex_;
 };
 

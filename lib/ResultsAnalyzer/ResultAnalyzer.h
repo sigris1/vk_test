@@ -34,7 +34,6 @@ public:
         } else if constexpr (is_tuple<result>::value){
             std::string returned;
             bool first = true;
-
             std::apply([&](const auto&... elems) {
                 ((returned += (first ? "" : " ") + ResultAnalyzer<std::decay_t<decltype(elems)>>::results_to_string(elems), first = false), ...);
             }, Result);
